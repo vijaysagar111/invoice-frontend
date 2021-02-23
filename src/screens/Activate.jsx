@@ -29,7 +29,7 @@ const Activate = ({ match }) => {
     e.preventDefault();
 
     axios
-      .post(`https://crm-task.herokuapp.com/api/activation`, {
+      .post(`${process.env.REACT_APP_CRM_URL}/api/activation`, {
         token
       })
       .then(res => {

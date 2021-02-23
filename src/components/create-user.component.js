@@ -27,8 +27,8 @@ export default class CreateUser extends Component {
         };
 
         console.log(newUser);
-        axios.post("https://invoice-backend1.herokuapp.com/users/add", newUser)
-            .then(res => console.log(res.data));
+        axios.post(`${process.env.REACT_APP_API_URL}/users/add`, newUser)
+            .then(res => alert(res.data));
 
         this.setState({
             username: ""

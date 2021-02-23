@@ -17,7 +17,7 @@ const ForgetPassword = ({history}) => {
     if (email) {
       setFormData({ ...formData, textChange: 'Submitting' });
       axios
-        .put(`https://crm-task.herokuapp.com/api/forgotpassword`, {
+        .put(`${process.env.REACT_APP_CRM_URL}/api/forgotpassword`, {
           email
         })
         .then(res => {

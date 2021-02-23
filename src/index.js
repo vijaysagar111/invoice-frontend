@@ -16,6 +16,7 @@ import CreateInvoice from "./components/create-invoice.component";
 import CreateUser from "./components/create-user.component";
 
 import "react-toastify/dist/ReactToastify.css";
+require('dotenv').config()
 ReactDOM.render(
   <BrowserRouter>
     <Switch>

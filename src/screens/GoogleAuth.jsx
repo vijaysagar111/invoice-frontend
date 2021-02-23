@@ -8,7 +8,7 @@ const Google = ({ informParent = f => f , clientId, apiUrl}) => {
     console.log(response);
     axios({
       method: 'POST',
-      url: `https://crm-task.herokuapp.com/api/google-login`,
+      url: `${process.env.REACT_APP_CRM_URL}/api/google-login`,
       data: { idToken: response.tokenId }
     })
       .then(response => {

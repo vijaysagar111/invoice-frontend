@@ -24,7 +24,7 @@ const Register = () => {
       if (password1 === password2) {
         setFormData({ ...formData, textChange: 'Submitting' });
         axios
-          .post(`https://crm-task.herokuapp.com/api/register`, {
+          .post(`${process.env.REACT_APP_CRM_URL}/api/register`, {
             name,
             email,
             password: password1

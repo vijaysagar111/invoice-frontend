@@ -20,7 +20,7 @@ const Login = ({ history }) => {
 
   const sendGoogleToken = tokenId => {
     axios
-      .post(`https://crm-task.herokuapp.com/api/googlelogin`, {
+      .post(`${process.env.REACT_APP_CRM_URL}/api/googlelogin`, {
         idToken: tokenId
       })
       .then(res => {
@@ -41,7 +41,7 @@ const Login = ({ history }) => {
 
   const sendFacebookToken = (userID, accessToken) => {
     axios
-      .post(`https://crm-task.herokuapp.com/api/facebooklogin`, {
+      .post(`${process.env.REACT_APP_CRM_URL}/api/facebooklogin`, {
         userID,
         accessToken
       })
@@ -68,7 +68,7 @@ const Login = ({ history }) => {
     if (email && password1) {
       setFormData({ ...formData, textChange: 'Submitting' });
       axios
-        .post(`https://crm-task.herokuapp.com/api/login`, {
+        .post(`${process.env.REACT_APP_CRM_URL}/api/login`, {
           email,
           password: password1
         })

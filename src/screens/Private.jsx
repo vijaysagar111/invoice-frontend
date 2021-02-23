@@ -20,7 +20,7 @@ const Private = ({ history }) => {
   const loadProfile = () => {
     const token = getCookie('token');
     axios
-      .get(`https://crm-task.herokuapp.com/api/user/${isAuth()._id}`, {
+      .get(`${process.env.REACT_APP_CRM_URL}/api/user/${isAuth()._id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -49,7 +49,7 @@ const Private = ({ history }) => {
     setFormData({ ...formData, textChange: 'Submitting' });
     axios
       .put(
-        `https://crm-task.herokuapp.com/api/user/update`,
+        `${process.env.REACT_APP_CRM_URL}/api/user/update`,
         {
           name,
           email,

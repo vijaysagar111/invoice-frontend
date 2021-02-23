@@ -29,7 +29,7 @@ const Invoice = props => {
     
     function onGenerate(){
         console.log(initialState)
-        axios.post('https://invoice-backend1.herokuapp.com/invoices/generate', initialState)
+        axios.post(`${process.env.REACT_APP_API_URL}/invoices/generate`, initialState)
             .then(res => alert(res.data));
   
       }
@@ -59,7 +59,7 @@ export default class InvoiceList extends Component {
     }
 
     componentDidMount() {
-        axios.get("https://invoice-backend1.herokuapp.com/invoices/")
+        axios.get(`${process.env.REACT_APP_API_URL}/invoices/`)
             .then(response => {
                 this.setState({
                     invoices: response.data
@@ -71,7 +71,7 @@ export default class InvoiceList extends Component {
     }
     
     deleteInvoice(id) {
-        axios.delete("https://invoice-backend1.herokuapp.com/invoices/" + id)
+        axios.delete(`${process.env.REACT_APP_API_URL}/invoices/` + id)
             .then(response => {console.log(response.data)});
 
         this.setState({

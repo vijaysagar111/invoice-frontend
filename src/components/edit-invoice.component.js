@@ -29,7 +29,7 @@ export default class EditInvoice extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://invoice-backend1.herokuapp.com/invoices/'+this.props.match.params.id) 
+    axios.get(`${process.env.REACT_APP_API_URL}/invoices/`+this.props.match.params.id) 
       .then(response => {
         this.setState({
           username: response.data.username,
@@ -37,14 +37,14 @@ export default class EditInvoice extends Component {
           paymentDate: new Date(response.data.paymentDate),
           customerName: response.data.customerName,
           amount: response.data.amount,
-          totalPaid: new Date(response.data.totalPaid)
+          totalPaid: response.data.totalPaid
         })   
       })
       .catch(function (error) {
         console.log(error);
       })
 
-    axios.get('https://invoice-backend1.herokuapp.com/users/')
+    axios.get(`${process.env.REACT_APP_API_URL}/users/`)
       .then(response => {
         this.setState({ users: response.data.map(user => user.username) });
       })
@@ -108,12 +108,11 @@ export default class EditInvoice extends Component {
       datePaid: this.state.datePaid,
     };
 
-    console.log(invoice);
 
-    axios.post('https://invoice-backend1.herokuapp.com/invoices/update/'+this.props.match.params.id, invoice)
-      .then(res => console.log(res.data));
+    axios.post(`${process.env.REACT_APP_API_URL}/invoices/update/`+this.props.match.params.id, invoice)
+      .then(res => alert(res.data));
     
-    window.location = '/';
+      window.location = '/home';
   }
 
   render() {

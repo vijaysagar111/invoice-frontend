@@ -27,7 +27,7 @@ const ResetPassword = ({match}) => {
     if ((password1 === password2) && password1 && password2) {
       setFormData({ ...formData, textChange: 'Submitting' });
       axios
-        .put(`https://crm-task.herokuapp.com/api/resetpassword`, {
+        .put(`${process.env.REACT_APP_CRM_URL}/api/resetpassword`, {
             newPassword: password1,
             resetPasswordLink: token
         })

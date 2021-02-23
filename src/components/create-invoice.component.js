@@ -32,7 +32,7 @@ export default class CreateInvoice extends Component {
     
 
     componentDidMount() {
-      axios.get("https://invoice-backend1.herokuapp.com/users/")
+      axios.get(`${process.env.REACT_APP_API_URL}/users/`)
         .then(response => {
           if(response.data.length > 0) {
             this.setState({
@@ -101,7 +101,7 @@ export default class CreateInvoice extends Component {
             datePaid: this.state.datePaid,
         };
 
-        axios.post('https://invoice-backend1.herokuapp.com/invoices/add', invoice)
+        axios.post(`${process.env.REACT_APP_API_URL}/invoices/add`, invoice)
           .then(res => console.log(res.data));
 
         window.location = "/navbar";
